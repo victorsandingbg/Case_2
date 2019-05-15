@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    h1 List of all Orders
+    table.order_table
+        tr
+            th Order date
+        if order_list && order_list.length > 0
+            each order in order_list
+                tr
+                    td #{order.order_date}
+
+        else
+            tr
+                td(colspan=5) No records
