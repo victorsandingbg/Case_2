@@ -4,11 +4,18 @@ block content
     h1 List of all Orders
     table.order_table
         tr
-            th Order date
+            th Orderdate
+            th Orderdetails
+            th Customers
+            th Store
         if order_list && order_list.length > 0
             each order in order_list
                 tr
                     td #{order.order_date}
+                    td #{order.orderdetails}
+                    td #{order.customer}
+                    td #{order.store}
+                    
 
         else
             tr

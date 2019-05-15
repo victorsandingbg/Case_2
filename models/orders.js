@@ -9,14 +9,14 @@ const OrdersSchema = new Schema({
         product_id: String,
         quantity_ordered: String
         }],
-    customers: {
+    customer: {
         first_name: String,
         last_name: String,
         address: {
             street_address: String,
             zip_code: String,
             city: String}
-        },
+    },
     contact: {
         phone: String,
         email: String

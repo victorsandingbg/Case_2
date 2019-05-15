@@ -51,3 +51,34 @@ a {
 .user_table tr:nth-child(even){
   background: #dae5f4;
 }
+
+/* Order Table */
+.order_table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.order_table th {
+  padding: 7px;
+  border: #4e95f4 1px solid;
+  background: darkblue;
+  color: white;
+}
+
+.order_table td {
+  padding: 7px;
+  border: #4e95f4 1px solid;
+}
+
+/* Fallback for IE < 8 */
+.order_table tr{
+  background: #b8d1f3;
+}
+
+.order_table tr:nth-child(odd){
+  background: #b8d1f3;
+}
+
+.order_table tr:nth-child(even){
+  background: #dae5f4;
+}
