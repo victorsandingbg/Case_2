@@ -1,4 +1,5 @@
 const Person = require('../models/person');
+const Orders = require('../models/orders');
 const mongoose = require('mongoose');
 
 function connect2db() {
