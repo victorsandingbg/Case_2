@@ -6,15 +6,29 @@ block content
         tr
             th Orderdate
             th Orderdetails
-            th Customers
+            th First Name
+            th Last Name
+            th Street Address
+            th Zip Code
+            th City
+            th Phone
+            th Email
             th Store
         if order_list && order_list.length > 0
             each order in order_list
                 tr
                     td #{order.order_date}
-                    td #{order.orderdetails}
-                    td #{order.customer}
-                    td #{order.store}
+                    td #{order.orderdetails.product_id}
+                    td #{order.customer.first_name}
+                    td #{order.customer.last_name}
+                    td #{order.customer.address.street_address}
+                    td #{order.customer.address.zip_code}
+                    td #{order.customer.address.city}
+                    td #{order.customer.contact.phone}
+                    td #{order.customer.contact.email}
+                    td #{order.store.store_name}
+                    
+
                     
 
         else
