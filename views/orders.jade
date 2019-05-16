@@ -1,7 +1,7 @@
 extends layout
 
 block content
-    h1 List of all Orders
+    h1 Orders to be shipped
     table.order_table
         tr
             th Orderdate
@@ -18,7 +18,7 @@ block content
             each order in order_list
                 tr
                     td #{order.order_date}
-                    td #{order.orderdetails.product_id}
+                    td #{order.orderdetails.product_name}
                     td #{order.customer.first_name}
                     td #{order.customer.last_name}
                     td #{order.customer.address.street_address}

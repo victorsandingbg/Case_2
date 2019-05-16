@@ -6,8 +6,8 @@ const Schema = mongoose.Schema;
 const OrdersSchema = new Schema({
     order_date: Date,
     orderdetails: {
-        product_id: Object,
-        quantity_ordered: Number
+        product_name: String,
+        quantity_ordered: String,
         },
     customer: {
         first_name: String,
@@ -26,11 +26,7 @@ const OrdersSchema = new Schema({
             street_address: String,
             zip_code: String,
             city: String}
-    },
-        employees: [{
-            first_name: String,
-            last_name: String
-        }]
+    }
 
 }, {collection: "order"});
 
