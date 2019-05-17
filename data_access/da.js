@@ -1,6 +1,7 @@
 const Person = require('../models/person');
 const Orders = require('../models/orders');
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
 function connect2db() {
     mongoose.connect('mongodb://localhost:27017/jsdb_3',
@@ -24,11 +25,31 @@ function connect3db() {
     });
 }
 
-function savePerson(p) {
+function savePerson(p, cb) {
     connect2db();
     var p1 = new Person(p);
-    p1.save();
+    bcrypt.hash(p1.password, 10, function(err, hash){
+        p1.password = hash;
+        p1.save(function(err){
+            if(err) {
+                console.log("Error creating user" + err)
+            }
+            cb(err);
+        });
+    });
 }
+
+function search(pattern, cb) {
+    connect2db();
+    Person.find({$or: [
+                        {first_name: {$regex: '.*' + pattern + '.*'}},
+                        {last_name:{$regex: '.*' + pattern + '.*'}}
+                      ]
+    }, function(err, users){
+        cb(err, users);
+    });
+}
+
 
 function saveOrders(p) {
     connect3db();
@@ -57,9 +78,9 @@ function getAllOrders(cb) {
 }
 
 module.exports = {
-    savePersonFromJson: savePerson,
+    savePersonFromForm: savePerson,
     findPersons: getAllPersons,
     saveOrdersFromJson: saveOrders,
-    findOrders: getAllOrders
-
+    findOrders: getAllOrders,
+    search: search,
 };
