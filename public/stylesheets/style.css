@@ -39,6 +39,16 @@ a {
   border: #4e95f4 1px solid;
 }
 
+.user_table td.center {
+  text-align: center;
+}
+
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
 /* Fallback for IE < 8 */
 .user_table tr{
   background: #b8d1f3;

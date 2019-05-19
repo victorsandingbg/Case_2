@@ -1,11 +1,12 @@
-extends layout
+extends ../layout
 
 block content
     h1 Orders to be shipped
     table.order_table
         tr
             th Orderdate
-            th Orderdetails
+            th Product Name
+            th Quantity Ordered
             th First Name
             th Last Name
             th Street Address
@@ -13,12 +14,12 @@ block content
             th City
             th Phone
             th Email
-            th Store
         if order_list && order_list.length > 0
             each order in order_list
                 tr
                     td #{order.order_date}
                     td #{order.orderdetails.product_name}
+                    td #{order.orderdetails.quantity_ordered}
                     td #{order.customer.first_name}
                     td #{order.customer.last_name}
                     td #{order.customer.address.street_address}
@@ -26,11 +27,6 @@ block content
                     td #{order.customer.address.city}
                     td #{order.customer.contact.phone}
                     td #{order.customer.contact.email}
-                    td #{order.store.store_name}
-                    
-
-                    
-
         else
             tr
                 td(colspan=5) No records

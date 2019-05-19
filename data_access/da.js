@@ -1,5 +1,6 @@
 const Person = require('../models/person');
 const Orders = require('../models/orders');
+const Products = require('../models/products');
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
@@ -50,6 +51,15 @@ function search(pattern, cb) {
     });
 }
 
+function deleteUser(id, cb) {
+    connect2db();
+    Person.deleteOne({"_id": id}, function (err, res) {
+       if(err) {
+           console.log("Error deleting user" + err);
+       }
+       cb(err);
+    });
+}
 
 function saveOrders(p) {
     connect3db();
@@ -77,10 +87,25 @@ function getAllOrders(cb) {
     });
 }
 
+function findProducts(cb) {
+    connect3db();
+    Products.find(function(err, products){
+        if(err) {
+            console.log('Error getting products' + err);
+        }
+        cb(err, products);
+    });
+
+}
+
+
+
 module.exports = {
     savePersonFromForm: savePerson,
     findPersons: getAllPersons,
     saveOrdersFromJson: saveOrders,
     findOrders: getAllOrders,
     search: search,
+    deleteUser: deleteUser,
+    findProducts: findProducts,
 };
