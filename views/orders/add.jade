@@ -1,0 +1,39 @@
+extends ../layout
+
+block content
+  h1 Place Order
+  form.user_input(action='/orders', method='post')
+
+    label(for='order_date')
+        span Order Date
+        input(type='text', name='order_date', id='order_date', required='true')
+    label(for='orderdetails.product_name')
+        span Product Name
+        input(type='text', name='orderdetails.product_name', id='orderdetails.product_name', required='true')
+    label(for='orderdetails.quantity_ordered')
+        span Quantity
+        input(type='text', name='orderdetails.quantity_ordered', id='orderdetails.quantity_ordered', required='true')
+    label(for='customer.first_name')
+        span First Name
+        input(type='text', name='customer.first_name', id='customer.first_name', required='true')
+    label(for='customer.last_name')
+        span Last Name
+        input(type='text', name='customer.last_name', id='customer.last_name', required='true')
+    label(for='customer.address.street_address')
+        span Street Adress
+        input(type='text', name='customer.address.street_address', id='customer.address.street_address', required='true')
+    label(for='customer.address.zip_code')
+        span Zip Code
+        input(type='text', name='customer.address.zip_code', id='customer.address.zip_code', required='true')
+    label(for='customer.address.city')
+        span City
+        input(type='text', name='customer.address.city', id='customer.address.city', required='true')
+    label(for='customer.contact.phone')
+        span Phone
+        input(type='text', name='customer.contact.phone', id='customer.contact.phone', required='true')
+    label(for='customer.contact.email')
+        span Email
+        input(type='text', name='customer.contact.email', id='customer.contact.email', required='true')
+    label.control-label(for='submit')
+        span
+        input(type='submit', id='submit', value='Save')

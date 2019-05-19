@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    h1= title
+    h2 Available Products
+    table.user_table
+        select(id="products_list", name="products_list")
+            each p in products_list
+                option #{p.products_name}, #{p.in_stock} st, ***Suitable for #{p.car.brand} #{p.car.model}***
+                

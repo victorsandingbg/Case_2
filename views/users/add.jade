@@ -2,6 +2,7 @@ extends ../layout
 
 block content
   h1 Add User
+  
   form.user_input(action='/users', method='post')
     label(for='first_name')
         span First Name
@@ -24,3 +25,7 @@ block content
     label.control-label(for='submit')
         span
         input(type='submit', id='submit', value='Save')
+
+
+
+
