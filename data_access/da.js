@@ -112,6 +112,33 @@ function getPersonById(userid, cb){
     });
 }
 
+function addFriend(userid1, userid2, cb) {
+    connect2db();
+    Person.findOneAndUpdate({'_id': userid1}, {$push: {'friends': userid2}}, upsert=false, function(err){
+        Person.findOneAndUpdate({'_id': userid2}, {$push: {'friends': userid1}}, upsert=false, function(err){
+            cb(err);
+        });
+    });
+}
+
+function getFriendsOfUser(user, cb) {
+    connect2db();
+    var friends_id = user.friends;
+    var friends = [];
+    var count = 0;
+
+    friends_id.forEach(function(id){
+        Person.findOne({'id': id}, function(err, friend){
+            friends.push(friend);
+            count++;
+            if(count === friends_id.length) {
+                cb(friends);
+            }
+        });
+    });
+    cb(friends);
+}
+
 
 module.exports = {
     savePersonFromForm: savePerson,
@@ -123,4 +150,6 @@ module.exports = {
     findProducts: findProducts,
     getUserbyUsername: getPersonByUsername,
     getUserById: getPersonById,
+    addFriend: addFriend,
+    getFriendsOfUser: getFriendsOfUser,
 };
