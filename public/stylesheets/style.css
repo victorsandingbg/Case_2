@@ -49,6 +49,11 @@ a {
   height: 24px;
 }
 
+.avatar-icon {
+  width: 20%;
+  height: 20%;
+}
+
 /* Fallback for IE < 8 */
 .user_table tr{
   background: #b8d1f3;
@@ -70,14 +75,14 @@ a {
 
 .order_table th {
   padding: 7px;
-  border: lightcoral 1px solid;
+  border: white 1px solid;
   background: pink;
   color: white;
 }
 
 .order_table td {
   padding: 7px;
-  border: #f44e6a 1px solid;
+  border: white 1px solid;
 }
 
 /* Fallback for IE < 8 */
@@ -97,9 +102,9 @@ a {
 .user_input{
   width: 450px;
   font-size: 16px;
-  background: #495C70;
+  background: rgb(220, 213, 226);
   padding: 30px 30px 15px 30px;
-  border: 5px solid #53687E;
+  border: 5px solid pink;
   }
   .user_input input[type=submit],
   .user_input input[type=button],

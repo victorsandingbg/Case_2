@@ -98,6 +98,19 @@ function findProducts(cb) {
 
 }
 
+function getPersonByUsername(username, cb) {
+    connect2db();
+    Person.findOne({'username': username}, function(err, user) {
+        cb(err, user);
+    });
+}
+
+function getPersonById(userid, cb){
+    connect2db();
+    Person.findOne({'_id': userid}, function(err, user){
+        cb(err, user);
+    });
+}
 
 
 module.exports = {
@@ -108,4 +121,6 @@ module.exports = {
     search: search,
     deleteUser: deleteUser,
     findProducts: findProducts,
+    getUserbyUsername: getPersonByUsername,
+    getUserById: getPersonById,
 };

@@ -10,9 +10,37 @@ var luckyRouter = require('./routes/lucky'); //
 var ordersRouter = require('./routes/orders');
 var searchRouter = require('./routes/search');
 var productsRouter = require('./routes/products');
+var loginRouter = require('./routes/login');
+var logoutRouter = require('./routes/logout');
+const session = require('express-session');
+const MongoStore = require('connect-mongo') (session);
+const mongoose = require('mongoose');
+const dashboardRouter = require('./routes/dashboard');
 
 
 var app = express();
+
+mongoose.connect('mongodb://localhost/jsdb_3', {
+  useNewUrlParser: true
+});
+
+mongoose.Promise = global.Promise;
+const db = mongoose.connection;
+
+app.use(
+  session({
+    store: new MongoStore({mongooseConnection: db}),
+    name: 'sid',
+    saveUninitialized: false,
+    resave: false,
+    secret: 'jkjkjhadgdfg//hjdfh%hgd2',
+    cookie: {
+     maxAge: 1000 * 60 * 60 * 2,
+     sameSite: true,
+     secure: process.env.NODE_ENV === 'production'
+    }
+  })
+);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -30,6 +58,9 @@ app.use('/lucky', luckyRouter); //
 app.use('/orders', ordersRouter);
 app.use('/search', searchRouter);
 app.use('/products', productsRouter);
+app.use('/login', loginRouter);
+app.use('/logout', logoutRouter);
+app.use('/dashboard', dashboardRouter);
 
 
 // catch 404 and forward to error handler
