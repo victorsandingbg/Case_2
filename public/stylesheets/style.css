@@ -21,6 +21,52 @@ a {
   color: #00B7FF;
 }
 
+.logo {
+  width: 128px;
+  height: 128px;
+}
+
+.title {
+  font-family: Arial;
+  font-size: 72px;
+  color: pink;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+/* Menu buttons */
+
+.menu {
+  background: pink;
+  color: black;
+  font-family: "Arial Black";
+  font-size: 24px;
+  border-radius: 10px;
+  padding-top: 4px;
+  padding-right: 8px;
+  padding-left: 8px;
+  margin: 15px;
+  box-shadow: darkorchid 4px 4px 10px;
+}
+
+.menu:hover {
+  color: purple;
+  text-decoration: none;
+}
+
+.menu-box {
+  margin-bottom: 50px;
+}
+
+.layout-container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: 2px;
+
+}
+
 /* User Table */
 .user_table {
   width: 100%;
@@ -29,20 +75,19 @@ a {
 
 .user_table th {
   padding: 7px;
-  border: #4e95f4 1px solid;
-  background: darkblue;
+  border: purple 1px solid;
+  background: pink;
   color: white;
 }
 
 .user_table td {
   padding: 7px;
-  border: #4e95f4 1px solid;
+  border: purple 1px solid;
 }
 
 .user_table td.center {
   text-align: center;
 }
-
 
 .icon {
   width: 24px;
@@ -60,11 +105,11 @@ a {
 }
 
 .user_table tr:nth-child(odd){
-  background: #b8d1f3;
+  background: white;
 }
 
 .user_table tr:nth-child(even){
-  background: #dae5f4;
+  background: paleturquoise;
 }
 
 /* Order Table */

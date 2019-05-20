@@ -3,10 +3,11 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var favicon = require('serve-favicon');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users'); //
-var luckyRouter = require('./routes/lucky'); //
+var usersRouter = require('./routes/users'); 
+var luckyRouter = require('./routes/lucky'); 
 var ordersRouter = require('./routes/orders');
 var searchRouter = require('./routes/search');
 var productsRouter = require('./routes/products');
@@ -41,6 +42,8 @@ app.use(
     }
   })
 );
+
+app.use(favicon(__dirname + '/public/images/favicon.ico'));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
