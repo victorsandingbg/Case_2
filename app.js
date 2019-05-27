@@ -8,23 +8,20 @@ var favicon = require('serve-favicon');
 
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users'); 
 var ordersRouter = require('./routes/orders');
 var searchRouter = require('./routes/search');
 var productsRouter = require('./routes/products');
-var loginRouter = require('./routes/login');
-var logoutRouter = require('./routes/logout');
 const session = require('express-session');
 const MongoStore = require('connect-mongo') (session);
 const mongoose = require('mongoose');
-const dashboardRouter = require('./routes/dashboard');
+
 
 
 var app = express();
 app.locals.moment = require('moment');
 
 
-mongoose.connect('mongodb://localhost/jsdb_3', {
+mongoose.connect('mongodb://localhost/spareparts', {
   useNewUrlParser: true
 });
 
@@ -60,13 +57,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter); //
 app.use('/orders', ordersRouter);
 app.use('/search', searchRouter);
 app.use('/products', productsRouter);
-app.use('/login', loginRouter);
-app.use('/logout', logoutRouter);
-app.use('/dashboard', dashboardRouter);
+
 
 
 // catch 404 and forward to error handler

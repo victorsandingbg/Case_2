@@ -42,5 +42,6 @@ block content
         span
         input(type='submit', id='submit', value='Save')
     
-
+select(name="order_date", id='order_date')
+option #{moment(Date.now()).format('MMMM Do YYYY, h:mm:ss a')}
         
