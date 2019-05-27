@@ -31,7 +31,7 @@ const OrdersSchema = new Schema({
 
 }, {collection: "order"});
 
-//Create model
+
 const Orders = mongoose.model("orders", OrdersSchema);
 
 

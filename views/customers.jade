@@ -1,0 +1,69 @@
+extends layout
+
+block content
+    script.
+        var changeField = function (email) {
+        var f = document.createElement('form');
+        f.setAttribute('method', 'post');
+        f.setAttribute('action', 'customers');
+
+        var i = document.createElement("input");
+        i.setAttribute('type', 'email',);
+        i.setAttribute('name', 'email');
+        i.setAttribute('value', email);
+        var s = document.createElement('input');
+        s.setAttribute('type', 'submit');
+        s.setAttribute('value', 'Submit');
+
+        f.appendChild(i);
+        f.appendChild(s);
+
+        var old = document.getElementById('email');
+        old.parentNode.replaceChild(f, old);
+        }
+    br
+    h1 Customers
+    table.order_table
+        tr
+            th First Name
+            th Last Name
+            th Street Address
+            th Zip Code
+            th City
+            th Phone
+            th Email
+            th Update Email
+            th Delete
+        if customers_list && customers_list.length > 0
+            each c in customers_list
+                tr
+                    td #{c.first_name}
+                    td #{c.last_name}
+                    td #{c.address.street_address}
+                    td #{c.address.zip_code}
+                    td #{c.address.city}
+                    td #{c.contact.phone}
+                    td #{c.contact.email}
+                    td.center
+                        form(action='/customers/updateemail?partid=#{c.id}', method='post')
+                            label(for='email')
+                                span
+                                input(type='email', name='email', id='email', required='true')
+                            label(for='submit')
+                                span
+                                input(type='submit', id='submit', value='Save')
+                    td.center
+                        a(href="/customers/delete?id=#{c.id}")
+                            img.icon(src="/images/delete.png")
+
+                    
+        else
+            tr
+                td(colspan=12) No records
+
+                    //value='#{c.contact.email}
+
+                    //p#email Email: #{c.contact.email}
+                        button(onclick="changeField('#{c.contact.email}')") Change Email
+
+    

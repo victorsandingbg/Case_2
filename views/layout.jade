@@ -11,7 +11,7 @@ html
         .col-xs-4
           img.logo(src='/images/icon.png')
         .col-xs-4
-          .title Social Network
+          .title Spareparts Automobile
       .row
         .col-xs-4
           .menu-box
@@ -19,11 +19,8 @@ html
             a.menu(href="/orders") Orders
             a.menu(href="/products") Find Products
             a.menu(href="/orders/add") Add Order
-            if userid
-              a.menu(href='/dashboard') Dashboard
-              a.menu(href="/logout") Logout
-            else
-              a.menu(href='/login') Login
+            a.menu(href="/customers") Add or alter Customers
+
         
 
     block content

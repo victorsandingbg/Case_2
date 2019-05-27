@@ -1,4 +1,5 @@
 const Orders = require('../models/orders');
+const Customers = require('../models/customers');
 const Products = require('../models/products');
 const mongoose = require('mongoose');
 
@@ -28,7 +29,6 @@ function search(pattern, cb) {
         cb(err, order);
     });
 }
-
 
 function saveOrders(p) {
     connect3db();
@@ -66,10 +66,57 @@ function deleteOrder(id, cb) {
     });
 }
 
+function deleteCustomers(id, cb) {
+    connect3db();
+    Customers.deleteOne({"_id": id}, function (err, res) {
+       if(err) {
+           console.log("Error deleting user" + err);
+       }
+       cb(err);
+    });
+}
+
+function findOneCustomers(id, cb) {
+    connect3db();
+    Customers.findOne({"_id": id}, function (err, res) {
+       if(err) {
+           console.log("Error deleting user" + err);
+       }
+       cb(err);
+    });
+}
+
+function findCustomers(cb) {
+    connect3db();
+     Customers.find(function(err, customers){
+         if(err) {
+             console.log('Error getting products' + err);
+         }
+         cb(err, customers);
+     });
+ }
+
+ function updateemail(partid, email, cb) {
+    connect3db();
+    console.log(partid, email);
+    Customers.updateOne({'_id': partid}, {$set: {'contact.email': email}}, function(err){ 
+        cb(err)
+    });
+ }
+
+
+
 module.exports = {
     saveOrders: saveOrders,
     findOrders: findOrders,
     search: search,
     findProducts: findProducts,
     deleteOrder: deleteOrder,
+    findCustomers: findCustomers,
+    updateemail: updateemail,
+    findOneCustomers: findOneCustomers,
+    deleteCustomers: deleteCustomers,
+
+   
+
 };
