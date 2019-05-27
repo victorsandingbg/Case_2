@@ -6,13 +6,8 @@ block content
 
     label(for='order_date')
         span Order Date
-        input(type='text', name='order_date', id='order_date', required='true')
-    label(for='orderdetails.product_name')
-        span Product Name
-        input(type='text', name='orderdetails.product_name', id='orderdetails.product_name', required='true')
-    label(for='orderdetails.quantity_ordered')
-        span Quantity
-        input(type='text', name='orderdetails.quantity_ordered', id='orderdetails.quantity_ordered', required='true')
+        select(name="order_date", id='order_date')
+            option #{moment(Date.now()).format('MMMM Do YYYY, h:mm:ss a')}
     label(for='customer.first_name')
         span First Name
         input(type='text', name='customer.first_name', id='customer.first_name', required='true')
@@ -34,6 +29,19 @@ block content
     label(for='customer.contact.email')
         span Email
         input(type='text', name='customer.contact.email', id='customer.contact.email', required='true')
+    label(for="orderdetails.product_name")
+      span Product
+      select.dropdown_window(name="orderdetails.product_name", type="text", id="orderdetails.product_name", required="true")
+            each products in products_list
+                option #{products.products_name}
+    label(for="orderdetails.quantity_ordered")
+      span Quantity
+      input(type='number', name='orderdetails.quantity_ordered', id='orderdetails.quantity_ordered', required='true', value="1")
+
     label.control-label(for='submit')
         span
         input(type='submit', id='submit', value='Save')
+    
+select(name="order_date", id='order_date')
+option #{moment(Date.now()).format('MMMM Do YYYY, h:mm:ss a')}
+        

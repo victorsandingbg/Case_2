@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  h1 Welcome to #{title}
+  h1 #{title}
   form.user_input(action='/search', method='post')
     label(for='search')
       span Search
@@ -9,3 +9,4 @@ block content
     label.control-label(for='submit')
       span
       input(type='submit', id='submit', value='Search')
+  
