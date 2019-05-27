@@ -18,7 +18,6 @@ router.post('/', function(req, res, next) {
 
 router.get('/add', function(req, res){
   da.findProducts(function(err, products) {
-
     res.render('orders/add', {title: 'Place order', products_list: products});
   });
 });
