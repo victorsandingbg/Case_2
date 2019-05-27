@@ -8,4 +8,18 @@ router.get('/', function(req, res, next) {
     });
   });
 
+router.get('/', function(req, res, next) {
+  da.findProducts(function(err, products) {
+    res.render('orders/add', {title:'Products', products_list: products});
+    });
+  });
+
+
+router.get('/add', function(req, res){
+  da.findProducts(function(err, products) {
+    console.log(products);
+    res.render('orders/add', {title: 'Place order', products_list: products});
+  });
+});
+
   module.exports = router;

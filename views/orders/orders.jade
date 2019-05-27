@@ -14,6 +14,7 @@ block content
             th City
             th Phone
             th Email
+            th Delete
         if order_list && order_list.length > 0
             each order in order_list
                 tr
@@ -27,6 +28,10 @@ block content
                     td #{order.customer.address.city}
                     td #{order.customer.contact.phone}
                     td #{order.customer.contact.email}
+                    td.center
+                        a(href="/orders/delete?id=#{order.id}")
+                            img.icon(src="/images/delete.png")
+                    
         else
             tr
-                td(colspan=5) No records
+                td(colspan=12) No records

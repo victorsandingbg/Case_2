@@ -4,10 +4,10 @@ const Schema = mongoose.Schema;
 
 // Create Orders Schema
 const OrdersSchema = new Schema({
-    order_date: Date,
+    order_date: String,
     orderdetails: {
         product_name: String,
-        quantity_ordered: String,
+        quantity_ordered: String
         },
     customer: {
         first_name: String,
@@ -26,7 +26,8 @@ const OrdersSchema = new Schema({
             street_address: String,
             zip_code: String,
             city: String}
-    }
+    },
+    
 
 }, {collection: "order"});
 
