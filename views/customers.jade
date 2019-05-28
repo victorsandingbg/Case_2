@@ -1,27 +1,6 @@
 extends layout
 
 block content
-    script.
-        var changeField = function (email) {
-        var f = document.createElement('form');
-        f.setAttribute('method', 'post');
-        f.setAttribute('action', 'customers');
-
-        var i = document.createElement("input");
-        i.setAttribute('type', 'email',);
-        i.setAttribute('name', 'email');
-        i.setAttribute('value', email);
-        var s = document.createElement('input');
-        s.setAttribute('type', 'submit');
-        s.setAttribute('value', 'Submit');
-
-        f.appendChild(i);
-        f.appendChild(s);
-
-        var old = document.getElementById('email');
-        old.parentNode.replaceChild(f, old);
-        }
-    br
     h1 Customers
     table.order_table
         tr
@@ -32,6 +11,7 @@ block content
             th City
             th Phone
             th Email
+            th Update Phone
             th Update Email
             th Delete
         if customers_list && customers_list.length > 0
@@ -45,7 +25,15 @@ block content
                     td #{c.contact.phone}
                     td #{c.contact.email}
                     td.center
-                        form(action='/customers/updateemail?partid=#{c.id}', method='post')
+                        form(action='/customers/updatephone?id=#{c.id}', method='post')
+                            label(for='phone')
+                                span
+                                input(type='phone', name='phone', id='phone', required='true')
+                            label(for='submit')
+                                span
+                                input(type='submit', id='submit', value='Save')
+                    td.center
+                        form(action='/customers/updateemail?id=#{c.id}', method='post')
                             label(for='email')
                                 span
                                 input(type='email', name='email', id='email', required='true')
@@ -55,15 +43,10 @@ block content
                     td.center
                         a(href="/customers/delete?id=#{c.id}")
                             img.icon(src="/images/delete.png")
-
-                    
+         
         else
             tr
                 td(colspan=12) No records
 
-                    //value='#{c.contact.email}
-
-                    //p#email Email: #{c.contact.email}
-                        button(onclick="changeField('#{c.contact.email}')") Change Email
 
     

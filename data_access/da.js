@@ -96,15 +96,21 @@ function findCustomers(cb) {
      });
  }
 
- function updateemail(partid, email, cb) {
+ function updateemail(id, email, cb) {
     connect3db();
-    console.log(partid, email);
-    Customers.updateOne({'_id': partid}, {$set: {'contact.email': email}}, function(err){ 
+    console.log(id, email);
+    Customers.updateOne({'_id': id}, {$set: {'contact.email': email}}, function(err){ 
         cb(err)
     });
  }
 
-
+ function updatephone(id, phone, cb) {
+    connect3db();
+    console.log(id, phone);
+    Customers.updateOne({'_id': id}, {$set: {'contact.phone': phone}}, function(err){ 
+        cb(err)
+    });
+ }
 
 module.exports = {
     saveOrders: saveOrders,
@@ -116,6 +122,7 @@ module.exports = {
     updateemail: updateemail,
     findOneCustomers: findOneCustomers,
     deleteCustomers: deleteCustomers,
+    updatephone: updatephone,
 
    
 

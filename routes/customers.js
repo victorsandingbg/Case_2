@@ -9,23 +9,21 @@ router.get('/', function(req, res, next) {
     });
   });
 
-  /*
-router.post('/', function(req, res) {
-    customersid = req.body['id']
-    email = req.body['email'];
-    console.log(customersid)
-    console.log(email)
-    da.updateEmailOnCustomers(customersid, email, function(err){
-        res.redirect('customers');
-            });
-     });
-     */
 
 router.post('/updateemail', function(req, res){
-    var partid = req.query.partid;
+    var id = req.query.id;
     var email = req.body.email;
-    console.log(req.body.partid, req.body.email);
-    da.updateemail(partid, email, function(err){
+    console.log(req.body.id, req.body.email);
+    da.updateemail(id, email, function(err){
+        res.redirect('/customers');
+    });
+});
+
+router.post('/updatephone', function(req, res){
+    var id = req.query.id;
+    var phone = req.body.phone;
+    console.log(req.body.id, req.body.phone);
+    da.updatephone(id, phone, function(err){
         res.redirect('/customers');
     });
 });
