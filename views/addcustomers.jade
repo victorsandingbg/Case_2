@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  h1 Add new customer
+  form.user_input(action='/addcustomers', method='post')
+
+    label(for="first_name")
+      span First Name
+      input(type='text', name='first_name', id='first_name', required='true')
+    label(for='last_name')
+        span Last Name
+        input(type='text', name='last_name', id='last_name', required='true')
+    label(for='address.street_address')
+        span Street Address
+        input(type='text', name='address.street_address', id='address.street_address', required='true')
+    label(for='address.zip_code')
+        span Zip Code
+        input(type='text', name='address.zip_code', id='address.zip_code', required='true')
+    label(for='address.city')
+        span City
+        input(type='text', name='address.city', id='address.city', required='true')
+    label(for='contact.phone')
+        span Phone
+        input(type='text', name='contact.phone', id='contact.phone', required='true')
+    label(for='contact.email')
+        span Email
+        input(type='text', name='contact.email', id='contact.email', required='true')
+    label.control-label(for='submit')
+        span
+        input(type='submit', id='submit', value='Save')
+

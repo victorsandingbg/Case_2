@@ -14,4 +14,13 @@ router.get('/', function(req, res, next) {
     });
   });
 
+  router.post('/updateout_price', function(req, res){
+    var id = req.query.id;
+    var out_price = req.body.out_price;
+    console.log(req.body.id, req.body.out_price);
+    da.updateout_price(id, out_price, function(err){
+        res.redirect('/products');
+    });
+});
+
   module.exports = router;

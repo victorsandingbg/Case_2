@@ -10,6 +10,7 @@ var ordersRouter = require('./routes/orders');
 var searchRouter = require('./routes/search');
 var productsRouter = require('./routes/products');
 var customersRouter = require('./routes/customers');
+var addcustomersRouter = require('./routes/addcustomers');
 const session = require('express-session');
 const MongoStore = require('connect-mongo') (session);
 const mongoose = require('mongoose');
@@ -60,6 +61,7 @@ app.use('/orders', ordersRouter);
 app.use('/search', searchRouter);
 app.use('/products', productsRouter);
 app.use('/customers', customersRouter);
+app.use('/addcustomers', addcustomersRouter);
 
 
 

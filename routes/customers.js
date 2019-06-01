@@ -5,7 +5,7 @@ var da = require('../data_access/da')
 
 router.get('/', function(req, res, next) {
     da.findCustomers(function(err, customers) {
-      res.render('customers', {title:'Orders in my list ', customers_list: customers});
+      res.render('customers', {title:'Customers', customers_list: customers});
     });
   });
 
@@ -35,5 +35,8 @@ router.get('/delete', function(req, res){
           });
         });
       });
+
+
+
 
 module.exports = router;

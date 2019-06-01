@@ -20,9 +20,9 @@ function connect3db() {
 function search(pattern, cb) {
     connect3db();
     console.log(mongoose.connection.readyState);
-    Orders.find({$or: [
-        {'customer.first_name': {$regex: '.*' + pattern + '.*'}},
-        {'customer.last_name': {$regex: '.*' + pattern + '.*'}}
+    Customers.find({$or: [
+        {'first_name': {$regex: '.*' + pattern + '.*'}},
+        {'last_name': {$regex: '.*' + pattern + '.*'}}
     ]
     }, function(err, order){
         console.log(order);
@@ -112,6 +112,21 @@ function findCustomers(cb) {
     });
  }
 
+ function saveCustomers(c) {
+    connect3db();
+    var c1 = new Customers(c);
+    c1.save();
+}
+
+
+function updateout_price(id, out_price, cb) {
+    connect3db();
+    console.log(id, out_price);
+    Products.updateOne({'_id': id}, {$set: {'out_price': out_price}}, function(err){ 
+        cb(err)
+    });
+ }
+
 module.exports = {
     saveOrders: saveOrders,
     findOrders: findOrders,
@@ -123,6 +138,8 @@ module.exports = {
     findOneCustomers: findOneCustomers,
     deleteCustomers: deleteCustomers,
     updatephone: updatephone,
+    saveCustomers: saveCustomers,
+    updateout_price: updateout_price,
 
    
 
