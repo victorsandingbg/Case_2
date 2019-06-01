@@ -6,6 +6,32 @@ block content
     table.user_table
         select(id="products_list", name="products_list")
             each p in products_list
-                option #{p.products_name}, #{p.in_stock} st, ***Suitable for #{p.car.brand} #{p.car.model}***
-  
+                option #{p.products_name}, ***#{p.in_stock} st In Stock***, ***Suitable for #{p.car.brand} #{p.car.model}***
+    table.order_table
+        tr
+            th Products Name
+            th In Price
+            th Out Price
+            th Set New Out Price
+
+        if products_list && products_list.length > 0
+            each pr in products_list
+                tr
+                    td #{pr.products_name}
+                    td #{pr.in_price}
+                    td #{pr.out_price}
+
+                    td.center
+                        form(action='/products/updateout_price?id=#{pr.id}', method='post')
+                            label(for='out_price')
+                                span
+                                input(type='Number', name='out_price', id='out_price', required='true', step="any", value='#{pr.out_price}')
+                            label(for='submit')
+                                span
+                                input(type='submit', id='submit', value='Save')
+
+         
+        else
+            tr
+                td(colspan=12) No records
                 
